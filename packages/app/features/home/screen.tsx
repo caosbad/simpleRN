@@ -10,7 +10,7 @@ import {
   YStack,
 } from '@my/ui'
 // import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
-import * as Updates from 'expo-updates'
+// import * as Updates from 'expo-updates'
 
 import React, { useState } from 'react'
 
@@ -21,19 +21,19 @@ export function HomeScreen() {
     href: '/user/nate',
   })
 
-  async function onFetchUpdateAsync() {
-    try {
-      const update = await Updates.checkForUpdateAsync()
+  // async function onFetchUpdateAsync() {
+  //   try {
+  //     const update = await Updates.checkForUpdateAsync()
 
-      if (update.isAvailable) {
-        await Updates.fetchUpdateAsync()
-        await Updates.reloadAsync()
-      }
-    } catch (error) {
-      // You can also add an alert() to see the error message in case of an error when fetching updates.
-      alert(`Error fetching latest Expo update: ${error}`)
-    }
-  }
+  //     if (update.isAvailable) {
+  //       await Updates.fetchUpdateAsync()
+  //       await Updates.reloadAsync()
+  //     }
+  //   } catch (error) {
+  //     // You can also add an alert() to see the error message in case of an error when fetching updates.
+  //     alert(`Error fetching latest Expo update: ${error}`)
+  //   }
+  // }
 
   return (
     <YStack f={1} jc="center" ai="center" p="$4" space>
@@ -64,7 +64,6 @@ export function HomeScreen() {
 
       <XStack>
         <Button {...linkProps}>Link to user</Button>
-        <Button onPress={onFetchUpdateAsync}>Link to user</Button>
       </XStack>
 
       {/* <SheetDemo /> */}

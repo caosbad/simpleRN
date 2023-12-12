@@ -1,28 +1,55 @@
 {
-  "name": "MyReactNativeApp",
-  "version": "0.0.1",
+  "name": "FWR-RN",
+  "version": "1.0.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "start": "react-native start"
+    "start": "react-native start",
+    "web": "yarn build && cd apps/next && yarn next",
+    "web:extract": "DISABLE_EXTRACTION=false yarn workspace next-app dev",
+    "web:prod": "yarn workspace next-app build",
+    "web:prod:serve": "yarn workspace next-app serve",
+    "vercel:install": "yarn set version 3.5 && yarn install",
+    "build": "yarn workspaces foreach --all --exclude next-app run build",
+    "upgrade:tamagui": "yarn up '*tamagui*'@latest '@tamagui/*'@latest",
+    "upgrade:tamagui:canary": "yarn up '*tamagui*'@canary '@tamagui/*'@canary",
+    "check-deps": "check-dependency-version-consistency ."
+  },
+  "resolutions": {
+    "esbuild": "0.19.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-refresh": "^0.14.0",
+    "react-native-svg": "13.9.0",
+    "react-native-web": "~0.19.6"
   },
   "dependencies": {
     "@react-native/metro-config": "^0.73.2",
     "@tamagui/config": "^1.79.6",
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-preset-expo": "^9.5.2",
+    "eslint": "^8.21.0",
+    "node-gyp": "^9.3.1",
+    "prettier": "^2.7.1",
     "react": "^18.2.0",
-    "react-native": "^0.72.7",
+    "react-native": "0.72.6",
     "tamagui": "^1.79.6",
-    "tamagui-loader": "^1.79.7"
+    "tamagui-loader": "^1.79.7",
+    "turbo": "^1.10.3",
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
-    "metro": "^0.80.1",
-    "metro-core": "^0.80.1",
     "@babel/core": "^7.17.9",
     "@expo/metro-config": "~0.10.0",
     "@tamagui/babel-plugin": "^1.79.7",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
+    "metro": "^0.80.1",
+    "metro-core": "^0.80.1",
     "metro-minify-terser": "^0.74.1",
     "typescript": "^4.9.4"
-  }
+  },
+  "packageManager": "yarn@3.6.3"
 }
